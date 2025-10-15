@@ -1,4 +1,4 @@
-from evaluator.evaluator import evaluate_hand
+from evaluator import evaluate_hand
 
 
 class Hand:
