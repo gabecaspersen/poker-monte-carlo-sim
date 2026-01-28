@@ -12,7 +12,7 @@ class Hand:
 
 
     def evaluate(self, board):
-        all_cards = self.hole + board
+        all_cards = self.hole_cards + board
         return evaluate_hand(all_cards)
     
     
