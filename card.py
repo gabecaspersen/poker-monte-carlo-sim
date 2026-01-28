@@ -1,9 +1,3 @@
-import numpy as np
-import pandas as pd
-import matplotlib as plt
-from enum import Enum
-
- 
 class Card:
     # Mapping from shorthand to full name
     suit_map = {
@@ -37,6 +31,25 @@ class Card:
 
         self.value = self.value_map[value_char]
         self.suit = self.suit_map[suit_char]
+        # Store original string format for phevaluator
+        self._original = f"{self.value.lower() if self.value != '10' else 't'}{suit_char}"
+
+    def to_string(self):
+        """Returns card in phevaluator format (e.g., 'Ah', 'Kd', 'Ts')"""
+        value_str = self.value if self.value != '10' else 'T'
+        suit_str = self.suit[0].lower()
+        return f"{value_str}{suit_str}"
+
+    def __str__(self):
+        return f"{self.value} of {self.suit}"
 
     def __repr__(self):
-        return f"{self.value} of {self.suit}"
+        return f"Card('{self.to_string()}')"
+
+    def __eq__(self, other):
+        if not isinstance(other, Card):
+            return False
+        return self.value == other.value and self.suit == other.suit
+
+    def __hash__(self):
+        return hash((self.value, self.suit))
