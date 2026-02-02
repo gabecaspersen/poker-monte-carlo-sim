@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python example_simulator.py:*)",
+      "Bash(python -c:*)",
+      "Bash(python:*)"
+    ]
+  }
+}
